@@ -1,0 +1,13 @@
+
+.formSheet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  grid: 1fr 1fr;
+  width: 500px;
+  gap: 30px;
+}
+
+.formBox {
+  
+}

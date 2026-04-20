@@ -1,4 +1,9 @@
 import "./styles.css";
 import { form } from "./form"
 
-form();
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  form();
+});

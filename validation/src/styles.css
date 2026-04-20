@@ -6,8 +6,18 @@
   grid: 1fr 1fr;
   width: 500px;
   gap: 30px;
+  margin: 100px;
 }
 
 .formBox {
-  
+  display: grid;
+  justify-content: center;
+}
+
+:valid {
+  border: 2px solid black;
+}
+
+:invalid {
+  border: 2px dotted red;
 }

@@ -1,4 +1,11 @@
 
+
+
+
+body {
+  background-color: darkslategrey;
+}
+
 .formSheet {
   display: flex;
   flex-wrap: wrap;
@@ -7,6 +14,8 @@
   width: 500px;
   gap: 30px;
   margin: 100px;
+  border: 2px solid black;
+  padding: 15px;
 }
 
 .formBox {
@@ -14,10 +23,16 @@
   justify-content: center;
 }
 
-:valid {
-  border: 2px solid black;
+input:valid {
+  border: 2px solid lightgreen;
 }
 
-:invalid {
+input:invalid {
   border: 2px dotted red;
+  background-color: #ffdddd;
+}
+
+input:focus {
+  outline: none;
+  border-style: dashed;
 }

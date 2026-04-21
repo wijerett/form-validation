@@ -1,4 +1,5 @@
-import ("./submit.js");
+import "./submit.js";
+
 
 const formBox = document.querySelector('.formBox');
 
@@ -17,13 +18,15 @@ export function form() {
   emailLabel.setAttribute("for", "emailOne");
   emailLabel.innerHTML = "email";
 
+  
+
   email.addEventListener("input", (event) => {
     email.setCustomValidity("");
     if (!email.validity.valid) {
       return;
     }
     if (!email.value.endsWith("@gmail.com")) {
-      email.setCustomValidity("Enter a valid email address")
+      email.setCustomValidity("Enter a valid email address");
     }
   });
 
@@ -35,12 +38,14 @@ export function form() {
 
   country.addEventListener("input", (event) => {
     country.setCustomValidity("");
-    if (country.value.length <= 2) {
+    if (country.value.length === 2) {
       return;
-    }
-    if (country.value.length >= 2) {
+    };
+    if (country.value.length > 2) {
       country.setCustomValidity("Please enter country as 2 digits");
-    }
+    } else if (country.value.length < 2) {
+      country.setCustomValidity("Please enter country as 2 digits");
+    };
   });
 
 
@@ -65,15 +70,39 @@ export function form() {
 
   const password = document.createElement('input');
   password.setAttribute("id", "passwordOne");
+  password.setAttribute("type", "password");
+  password.setAttribute("pattern", "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
+  //password.setAttribute("title", "Must contain at least one uppercase and lowercase letter, one number and and at least 8 or more characters");
   const passwordLabel = document.createElement('label');
   passwordLabel.setAttribute("for", "passwordOne");
   passwordLabel.textContent = "password";
 
+  password.addEventListener("input", (event) => {
+    password.setCustomValidity("");
+    if (password.value.patternMismatch) {
+      password.setCustomValidity(password.title);
+    } else {
+      password.setCustomValidity("");
+    }
+  });
+
+
+
   const passwordConf = document.createElement('input');
   passwordConf.setAttribute("id", "passwordConf");
+  passwordConf.setAttribute("type", "password");
+
   const passwordConfLabel = document.createElement('label');
   passwordConfLabel.setAttribute("for", "passwordConf");
   passwordConfLabel.textContent = "password confirmation";
+  passwordConf.addEventListener("input", (event) => {
+    if (passwordConf.value !== password.value) {
+      passwordConf.setCustomValidity("Passwords do not match");
+    } else {
+      passwordConf.setCustomValidity("");
+    }
+  });
+
 
   const submit = document.createElement('button');
   submit.setAttribute("id", "submit");
